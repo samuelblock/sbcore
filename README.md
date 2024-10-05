@@ -1,11 +1,10 @@
 # sbcore
 Sbcore is an easy-to-use boilerplate header that I use in all of my C projects. It aims to modernize the C language via its preprocessor and provide users with much-needed quality of life features.
 
-`!!WARNING!!` It is important to note that all variables containing only dollar signs ($) are reserved for sbcore. Using them in your codebase may cause compilation errors or worse: uncaught logical errors.
+`!!WARNING!!` It is important to note that all variable names containing only dollar signs ($) are reserved for sbcore. Using them in your codebase may cause compilation errors or worse: uncaught logical errors.
 
 ## Configuration
-Sbcore can be configured by defining macros before including the header. Below is a list of every configurat
-ion option in no particular order:
+Sbcore can be configured by defining macros before including the header. Below is a list of every configuration option in no particular order:
 
 | Macro                     | Function                                           |
 |---------------------------|----------------------------------------------------|
