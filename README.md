@@ -21,7 +21,7 @@ One of sbcore's most foundational features are its integer types. Sbcore provide
 |ulen\_t|size\_t            |An unsigned integer used for lengths and sizes|
 |ilen\_t|ssize\_t           |A signed integer used for lengths and sizes   |
 
-These types are referenced throughout the rest of sbcore, so some features may compile if this one is not included. This feature can be disabled by defining the `SBCORE_NO_INTEGERS` macro before including the header.
+These types are referenced throughout the rest of sbcore, so some features may not compile if this one is not included. This feature can be disabled by defining the `SBCORE_NO_INTEGERS` macro before including the header.
 
 ## Floating-Point Types
 Similarly, sbcore also provides alternate floating-point types. They are as follows:
@@ -48,7 +48,7 @@ What makes up the greatest portion of the `sbcore.h` header is its implementatio
 | Length (ulen_t) | Capacity (ulen_t) | String data (char...) | Null terminator (char) |
 +-----------------+-------------------+-----------------------+------------------------+
 ```
-A string's "length" is how much of the allocated space is actually taken up by intentional data. A string's "capacity" is how much space has been allocated for that data, regardless of its length. This is done to allow for strings to grow in large steps, reducing the number of calls to `realloc` in loops and other repetitive scenarios. The pointer returned from `str_make` points to the first character of the string's data, but its header. This allows for zero-based indexing but can complicate memory management. After the string data, an extra byte is allocated to ensure there is always enough space for the null terminator.
+A string's "length" is how much of the allocated space is actually taken up by intentional data. A string's "capacity" is how much space has been allocated for that data, regardless of its length. This is done to allow for strings to grow in large steps, reducing the number of calls to `realloc` in loops and other repetitive scenarios. The pointer returned from `str_make` points to the first character of the string's data, not its header. This allows for zero-based indexing but can complicate memory management. After the string data, an extra byte is allocated to ensure there is always enough space for the null terminator.
 
 After every call to any* sbcore string function, it is garunteed that `string[str_length(string)] == 0`, meaning it is always safe to pass as a regular, C-style string. To achieve this, however, any function that has the possibilty of reallocating the string returns its potentially new location.
 
