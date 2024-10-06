@@ -1,12 +1,15 @@
 #ifndef _SAMUEL_BLOCK_CORE_H
 #define _SAMUEL_BLOCK_CORE_H
 
-#define _SBCORE_OVERLOAD_3ARGS(a, b, c, name, ...) name
+#ifndef SBCORE_NO_OVERLOADING
+	#define _SBCORE_OVERLOAD_3ARGS(a, b, c, name, ...) name
+#endif
 
 #ifndef SBCORE_NO_INTEGERS
 	#include <stdint.h>
 	#include <stddef.h>
-	
+	#include <unistd.h>
+
 	typedef uint8_t   u8_t;
 	typedef uint16_t  u16_t;
 	typedef uint32_t  u32_t;
@@ -19,7 +22,7 @@
 	typedef int32_t  i32_t;
 	typedef int64_t  i64_t;
 	typedef intptr_t iptr_t;
-	// TODO: typedef ssize_t    ulen_t;
+	typedef ssize_t  ilen_t;
 #endif
 
 #ifndef SBCORE_NO_FLOATS
@@ -29,9 +32,13 @@
 	#ifndef SBCORE_F64_TYPE
 		#define SBCORE_F64_TYPE double
 	#endif
+	#ifndef SBCORE_FPTR_TYPE
+		#define SBCORE_FPTR_TYPE double
+	#endif
 
-	typedef SBCORE_F32_TYPE f32_t;
-	typedef SBCORE_F64_TYPE f64_t;
+	typedef SBCORE_F32_TYPE  f32_t;
+	typedef SBCORE_F64_TYPE  f64_t;
+	typedef SBCORE_FPTR_TYPE fptr_t;
 #endif
 
 #ifndef SBCORE_NO_BOOLEAN
